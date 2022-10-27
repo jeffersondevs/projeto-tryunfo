@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 class Card extends Component {
   superTrunfo = () => {
+    const textoExibido = <h4 data-testid="trunfo-card">Super Trunfo</h4>;
     const { cardTrunfo } = this.props;
     if (cardTrunfo) {
-      return <h4 data-testid="trunfo-card">Super Trunfo</h4>;
+      return textoExibido;
     }
   };
 
