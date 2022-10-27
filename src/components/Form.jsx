@@ -2,46 +2,114 @@ import React, { Component } from 'react';
 
 class Form extends Component {
   render() {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+      onInputChange,
+      onSaveButtonClick,
+    } = this.props;
     return (
       <section>
         <form>
-          <label htmlFor="name">
+          <label htmlFor="cardName">
             Nome
-            <input data-testid="name-input" type="text" id="name" />
+            <input
+              data-testid="name-input"
+              type="text"
+              id="cardName"
+              value={ cardName }
+              onChange={ onInputChange }
+            />
           </label>
-          <label htmlFor="description">
+          <label htmlFor="cardDescription">
             Descrição
-            <input data-testid="description-input" type="textarea" id="description" />
+            <input
+              data-testid="description-input"
+              type="textarea"
+              id="cardDescription"
+              value={ cardDescription }
+              onChange={ onInputChange }
+            />
           </label>
-          <label htmlFor="attr1">
+          <label htmlFor="cardAttr1">
             Atributo 1
-            <input data-testid="attr1-input" type="number" id="attr1" />
+            <input
+              data-testid="attr1-input"
+              type="number"
+              id="cardAttr1"
+              value={ cardAttr1 }
+              onChange={ onInputChange }
+            />
           </label>
-          <label htmlFor="attr2">
+          <label htmlFor="cardAttr2">
             Atributo 2
-            <input data-testid="attr2-input" type="number" id="attr2" />
+            <input
+              data-testid="attr2-input"
+              type="number"
+              id="cardAttr2"
+              value={ cardAttr2 }
+              onChange={ onInputChange }
+            />
           </label>
-          <label htmlFor="attr3">
+          <label htmlFor="cardAttr3">
             Atributo 3
-            <input data-testid="attr3-input" type="number" id="attr3" />
+            <input
+              data-testid="attr3-input"
+              type="number"
+              id="cardAttr3"
+              value={ cardAttr3 }
+              onChange={ onInputChange }
+            />
           </label>
-          <label htmlFor="image">
+          <label htmlFor="cardImage">
             Imagem
-            <input data-testid="image-input" type="text" id="image" />
+            <input
+              data-testid="image-input"
+              type="text"
+              id="cardImage"
+              value={ cardImage }
+              onChange={ onInputChange }
+            />
           </label>
-          <label htmlFor="rare">
+          <label htmlFor="cardRare">
             Raridade
-            <select data-testid="rare-input" id="rare">
+            <select
+              data-testid="rare-input"
+              id="cardRare"
+              value={ cardRare }
+              onChange={ onInputChange }
+            >
               <option value="normal">normal</option>
               <option value="raro">raro</option>
               <option value="muito raro">muito raro</option>
             </select>
           </label>
-          <label htmlFor="trunfo">
+          <label htmlFor="cardTrunfo">
             Super Trunfo
-            <input data-testid="trunfo-input" type="checkbox" id="trunfo" />
+            <input
+              data-testid="trunfo-input"
+              type="checkbox"
+              id="cardTrunfo"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+            />
           </label>
-          <button data-testid="save-button" type="submit">Salvar</button>
+          <button
+            data-testid="save-button"
+            type="submit"
+            disabled={ isSaveButtonDisabled }
+            onClick={ onSaveButtonClick }
+          >
+            Salvar
+          </button>
         </form>
       </section>
     );
