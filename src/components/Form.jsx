@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../style/Form.css';
 
 class Form extends Component {
   render() {
@@ -19,25 +20,24 @@ class Form extends Component {
     return (
       <section>
         <form>
-          <label htmlFor="cardName">
+          <div>
             Nome
             <input
               data-testid="name-input"
               type="text"
-              id="cardName"
               name="cardName"
               value={ cardName }
               onChange={ onInputChange }
               minLength="5"
               required
             />
-          </label>
-          <label htmlFor="cardDescription">
+          </div>
+          <di>
             Descrição
             <input
+              className="cardDescription"
               data-testid="description-input"
               type="textarea"
-              id="cardDescription"
               name="cardDescription"
               value={ cardDescription }
               onChange={ onInputChange }
@@ -45,13 +45,12 @@ class Form extends Component {
               maxLength="120"
               required
             />
-          </label>
-          <label htmlFor="cardAttr1">
+          </di>
+          <div>
             Atributo 1
             <input
               data-testid="attr1-input"
               type="number"
-              id="cardAttr1"
               name="cardAttr1"
               value={ cardAttr1 }
               onChange={ onInputChange }
@@ -59,13 +58,12 @@ class Form extends Component {
               max="90"
               required
             />
-          </label>
-          <label htmlFor="cardAttr2">
+          </div>
+          <div>
             Atributo 2
             <input
               data-testid="attr2-input"
               type="number"
-              id="cardAttr2"
               name="cardAttr2"
               value={ cardAttr2 }
               onChange={ onInputChange }
@@ -73,13 +71,12 @@ class Form extends Component {
               max="90"
               required
             />
-          </label>
-          <label htmlFor="cardAttr3">
+          </div>
+          <div>
             Atributo 3
             <input
               data-testid="attr3-input"
               type="number"
-              id="cardAttr3"
               name="cardAttr3"
               value={ cardAttr3 }
               onChange={ onInputChange }
@@ -87,25 +84,23 @@ class Form extends Component {
               max="90"
               required
             />
-          </label>
-          <label htmlFor="cardImage">
+          </div>
+          <div>
             Imagem
             <input
               data-testid="image-input"
               type="text"
-              id="cardImage"
               name="cardImage"
               value={ cardImage }
               onChange={ onInputChange }
               minLength="5"
               required
             />
-          </label>
-          <label htmlFor="cardRare">
+          </div>
+          <div>
             Raridade
             <select
               data-testid="rare-input"
-              id="cardRare"
               name="cardRare"
               value={ cardRare }
               onChange={ onInputChange }
@@ -115,18 +110,17 @@ class Form extends Component {
               <option value="raro">raro</option>
               <option value="muito raro">muito raro</option>
             </select>
-          </label>
-          <label htmlFor="cardTrunfo">
+          </div>
+          <div>
             Super Trunfo
             <input
               data-testid="trunfo-input"
               type="checkbox"
-              id="cardTrunfo"
               name="cardTrunfo"
               checked={ cardTrunfo }
               onChange={ onInputChange }
             />
-          </label>
+          </div>
           <button
             data-testid="save-button"
             type="submit"
@@ -145,9 +139,9 @@ class Form extends Component {
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.number.isRequired,
-  cardAttr2: PropTypes.number.isRequired,
-  cardAttr3: PropTypes.number.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,

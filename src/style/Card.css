@@ -1,0 +1,22 @@
+.container-card {
+  border: 1px solid black;
+  margin: auto;
+  padding: 20px;
+  width: 40%;
+}
+
+h2 {
+  border: 1px solid black;
+  height: 30px;
+}
+
+img {
+  border: 1px solid red;
+  height: 200px;
+  margin: 0 150px;
+  width: 300px;
+}
+
+p {
+  border: 1px solid green;
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import '../style/Card.css';
+
 class Card extends Component {
   superTrunfo = () => {
     const textoExibido = <h4 data-testid="trunfo-card">Super Trunfo</h4>;
@@ -22,9 +24,11 @@ class Card extends Component {
     } = this.props;
 
     return (
-      <section>
+      <section className="container-card">
         <h2 data-testid="name-card">{ cardName }</h2>
-        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
+        <div>
+          <img data-testid="image-card" src={ cardImage } alt={ cardName } />
+        </div>
         <p data-testid="description-card">{ cardDescription }</p>
         <p data-testid="attr1-card">{ cardAttr1 }</p>
         <p data-testid="attr2-card">{ cardAttr2 }</p>
