@@ -6,13 +6,49 @@ class App extends React.Component {
   state = {
     cardName: '',
     cardDescription: '',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
+    cardAttr1: 0,
+    cardAttr2: 0,
+    cardAttr3: 0,
     cardImage: '',
-    cardRare: '',
-    cardTrunfo: '',
-    isSaveButtonDisabled: '',
+    cardRare: 'normal',
+    cardTrunfo: 'false',
+    isSaveButtonDisabled: 'true',
+  };
+
+  somaAttr = () => {
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    return +cardAttr1 + +cardAttr2 + +cardAttr3;
+  };
+
+  isValidacaoForm = () => {
+    const { cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
+
+    const minAttr = 0;
+    const maxAttr = 90;
+    const maxSoma = 210;
+    const maxAlcancado = this.somaAttr() > maxSoma;
+
+    const isVazio = ({ length }) => !length;
+    const isVaria = (value, from, to) => value >= from && value <= to;
+
+    const temCamposVazio = [cardName, cardImage, cardDescription, cardRare]
+      .some((valor) => isVazio(valor));
+    const temCamposQueUltrapassam = [cardAttr1, cardAttr2, cardAttr3]
+      .some((valor) => !isVaria(valor, minAttr, maxAttr));
+    return !(maxAlcancado || temCamposVazio || temCamposQueUltrapassam);
+  };
+
+  validarInput = () => {
+    this.setState({
+      isSaveButtonDisabled: !this.isValidacaoForm(),
+    });
   };
 
   onInputChange = ({ target }) => {
@@ -20,6 +56,8 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    }, () => {
+      this.validarInput();
     });
   };
 

@@ -28,6 +28,8 @@ class Form extends Component {
               name="cardName"
               value={ cardName }
               onChange={ onInputChange }
+              minLength="5"
+              required
             />
           </label>
           <label htmlFor="cardDescription">
@@ -39,6 +41,9 @@ class Form extends Component {
               name="cardDescription"
               value={ cardDescription }
               onChange={ onInputChange }
+              minLength="5"
+              maxLength="120"
+              required
             />
           </label>
           <label htmlFor="cardAttr1">
@@ -50,6 +55,9 @@ class Form extends Component {
               name="cardAttr1"
               value={ cardAttr1 }
               onChange={ onInputChange }
+              min="0"
+              max="90"
+              required
             />
           </label>
           <label htmlFor="cardAttr2">
@@ -61,6 +69,9 @@ class Form extends Component {
               name="cardAttr2"
               value={ cardAttr2 }
               onChange={ onInputChange }
+              min="0"
+              max="90"
+              required
             />
           </label>
           <label htmlFor="cardAttr3">
@@ -72,6 +83,9 @@ class Form extends Component {
               name="cardAttr3"
               value={ cardAttr3 }
               onChange={ onInputChange }
+              min="0"
+              max="90"
+              required
             />
           </label>
           <label htmlFor="cardImage">
@@ -83,6 +97,8 @@ class Form extends Component {
               name="cardImage"
               value={ cardImage }
               onChange={ onInputChange }
+              minLength="5"
+              required
             />
           </label>
           <label htmlFor="cardRare">
@@ -93,6 +109,7 @@ class Form extends Component {
               name="cardRare"
               value={ cardRare }
               onChange={ onInputChange }
+              required
             >
               <option value="normal">normal</option>
               <option value="raro">raro</option>
@@ -128,9 +145,9 @@ class Form extends Component {
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.number.isRequired,
+  cardAttr2: PropTypes.number.isRequired,
+  cardAttr3: PropTypes.number.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
