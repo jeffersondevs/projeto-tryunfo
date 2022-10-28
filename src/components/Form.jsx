@@ -3,6 +3,27 @@ import PropTypes from 'prop-types';
 import '../style/Form.css';
 
 class Form extends Component {
+  hasCardTrunfo = () => {
+    const { cardTrunfo, onInputChange, hasTrunfo } = this.props;
+    if (!hasTrunfo) {
+      return (
+        <div>
+          Super Trunfo
+          <input
+            data-testid="trunfo-input"
+            type="checkbox"
+            name="cardTrunfo"
+            checked={ cardTrunfo }
+            onChange={ onInputChange }
+          />
+        </div>
+      );
+    }
+    return (
+      <span>Você já tem um Super Trunfo em seu baralho</span>
+    );
+  };
+
   render() {
     const {
       cardName,
@@ -12,7 +33,6 @@ class Form extends Component {
       cardAttr3,
       cardImage,
       cardRare,
-      cardTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -111,16 +131,8 @@ class Form extends Component {
               <option value="muito raro">muito raro</option>
             </select>
           </div>
-          <div>
-            Super Trunfo
-            <input
-              data-testid="trunfo-input"
-              type="checkbox"
-              name="cardTrunfo"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-            />
-          </div>
+
+          { this.hasCardTrunfo() }
           <button
             data-testid="save-button"
             type="submit"
@@ -148,6 +160,7 @@ Form.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
 };
 
 export default Form;
