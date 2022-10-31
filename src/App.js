@@ -1,20 +1,21 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+/* import Button from './components/Button'; */
 
 class App extends React.Component {
   state = {
     cardName: '',
     cardDescription: '',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
+    cardAttr1: '0',
+    cardAttr2: '0',
+    cardAttr3: '0',
     cardImage: '',
     cardRare: 'normal',
-    cardTrunfo: 'false',
-    isSaveButtonDisabled: 'true',
-    cardList: [],
+    cardTrunfo: false,
+    isSaveButtonDisabled: true,
     hasTrunfo: false,
+    cardList: [],
   };
 
   somaAttr = () => {
@@ -65,6 +66,7 @@ class App extends React.Component {
 
   onSaveButtonClick = () => {
     const {
+      cardName,
       cardDescription,
       cardImage,
       cardRare,
@@ -77,6 +79,7 @@ class App extends React.Component {
     } = this.state;
 
     cardList.push({
+      cardName,
       cardDescription,
       cardImage,
       cardRare,
@@ -112,6 +115,7 @@ class App extends React.Component {
       cardTrunfo,
       isSaveButtonDisabled,
       hasTrunfo,
+      cardList,
     } = this.state;
 
     return (
@@ -131,6 +135,8 @@ class App extends React.Component {
             onInputChange={ this.onInputChange }
             hasTrunfo={ hasTrunfo }
           />
+        </section>
+        <section>
           <Card
             cardName={ cardName }
             cardDescription={ cardDescription }
@@ -141,6 +147,21 @@ class App extends React.Component {
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
           />
+        </section>
+        <section>
+          {cardList.map((card) => (
+            <Card
+              key={ card.cardName }
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.cardImage }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+            />
+          ))}
         </section>
       </div>
     );

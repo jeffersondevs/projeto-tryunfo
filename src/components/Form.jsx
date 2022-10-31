@@ -52,7 +52,7 @@ class Form extends Component {
               required
             />
           </div>
-          <di>
+          <div>
             Descrição
             <input
               className="cardDescription"
@@ -65,7 +65,7 @@ class Form extends Component {
               maxLength="120"
               required
             />
-          </di>
+          </div>
           <div>
             Atributo 1
             <input
