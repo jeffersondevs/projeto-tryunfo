@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
-/* import Button from './components/Button'; */
+import Button from './components/Button';
 
 class App extends React.Component {
   state = {
@@ -103,6 +103,16 @@ class App extends React.Component {
     });
   };
 
+  deletaCarta = ({ target }) => {
+    const { name } = target;
+    const { cardList } = this.state;
+    const filteredList = cardList.filter((card) => card.cardName !== name);
+    this.setState({
+      hasTrunfo: filteredList.some(({ cardTrunfo }) => cardTrunfo),
+      cardList: filteredList,
+    });
+  };
+
   render() {
     const {
       cardName,
@@ -146,21 +156,27 @@ class App extends React.Component {
             cardImage={ cardImage }
             cardRare={ cardRare }
             cardTrunfo={ cardTrunfo }
+            onInputChange={ this.onInputChange }
           />
         </section>
         <section>
           {cardList.map((card) => (
-            <Card
-              key={ card.cardName }
-              cardName={ card.cardName }
-              cardDescription={ card.cardDescription }
-              cardAttr1={ card.cardAttr1 }
-              cardAttr2={ card.cardAttr2 }
-              cardAttr3={ card.cardAttr3 }
-              cardImage={ card.cardImage }
-              cardRare={ card.cardRare }
-              cardTrunfo={ card.cardTrunfo }
-            />
+            <div key={ card.cardName }>
+              <Card
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+              />
+              <Button
+                deletaCarta={ this.deletaCarta }
+                cardName={ card.cardName }
+              />
+            </div>
           ))}
         </section>
       </div>
